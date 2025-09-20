@@ -1,4 +1,4 @@
-import trash from "../../images/trash.png";
+import trash from "@images/trash.png";
 
 function Card() {
   return (

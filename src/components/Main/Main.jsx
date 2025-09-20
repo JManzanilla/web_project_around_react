@@ -1,11 +1,12 @@
-import lapiz from "../../images/lapiz.png";
-import cruz from "../../images/cruz.png";
-import Card from "./components/Card/Card";
-import EditProfile from "./components/Popup/EditProfile/EditProfile";
-import NewCard from "./components/Card/Card";
-import Avatar from "./components/Popup/Avatar/Avatar";
-import ImagePopup from "./components/Popup/ImagePopup/ImagePopup";
-import RemoveCard from "./components/Popup/RemoveCard/RemoveCard";
+import lapiz from "@images/lapiz.png";
+import cruz from "@images/cruz.png";
+import Card from "@componentsMain/Card/Card";
+import EditProfile from "@componentsMain/Popup/EditProfile/EditProfile";
+import NewCard from "@componentsMain/Card/Card";
+import Avatar from "@componentsMain/Popup/Avatar/Avatar";
+import ImagePopup from "@componentsMain/Popup/ImagePopup/ImagePopup";
+import RemoveCard from "@componentsMain/Popup/RemoveCard/RemoveCard";
+import Container from "@componentsMain/Loader/Container";
 
 function Main() {
   return (
@@ -48,23 +49,7 @@ function Main() {
           </div>
         </section>
         <section className="element">
-          <div className="container">
-            <div className="container__loader">
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-            </div>
-          </div>
+          <Container />
           <Card />
         </section>
         <EditProfile />

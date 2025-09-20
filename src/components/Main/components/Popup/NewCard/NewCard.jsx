@@ -1,4 +1,4 @@
-import Equis from "../../../../../images/equis.png";
+import Equis from "@images/equis.png";
 
 function NewCard() {
   return (
