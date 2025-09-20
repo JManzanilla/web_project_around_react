@@ -1,0 +1,231 @@
+.popup {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+.popup__show {
+  pointer-events: auto;
+  opacity: 1;
+}
+.popup__container {
+  max-width: 370px;
+  width: 100%;
+  background-color: #fff;
+  color: black;
+  position: relative;
+  top: 0;
+  right: 0;
+  /*margin: 150px auto;*/
+  padding: 34px 36px;
+  border-radius: 25px;
+}
+.popup__container__title-image {
+  color: #fff;
+}
+.popup__container-images {
+  /*max-width: 65vw;
+  max-height: 65vh;*/
+  color: black;
+  position: relative;
+  top: 0;
+  right: 0;
+  /*margin: 150px auto;*/
+  padding: 34px 36px;
+  border-radius: 25px;
+}
+.popup__container-image {
+  /*width: 50vw;*/
+  height: 70vh;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.popup__container-title {
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  margin: 0 0 54px;
+}
+.popup__form-fieldset {
+  max-width: 358px;
+  border: 0;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.popup__form-input {
+  box-sizing: border-box;
+  margin: 0 0 30px 0;
+  border: 0;
+  border-bottom: solid 1px #c4c4c4;
+  width: 100%;
+  padding: 5px 5px 14px;
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+}
+.popup__form-input::placeholder {
+  color: #c4c4c4;
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.popup__form-btn-submit {
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.popup__form-btn-submit:hover {
+  opacity: 0.6;
+}
+.popup__form-btn-submit-disable {
+  background-color: #fff;
+  color: #c4c4c4;
+  pointer-events: none;
+}
+
+.popup__input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+.popup__input_type_error {
+  border-color: rgb(252, 4, 4);
+  font-family: "Inter", sans-serif;
+  outline: none;
+}
+
+.popup__error {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: rgb(252, 4, 4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  min-height: 14px;
+  margin-bottom: 10px;
+  display: block;
+}
+/*.popup__input:focus {
+  border: 2px solid green;
+  outline: none;
+}*/
+.popup__input-inactive:focus {
+  border: 2px solid rgb(252, 4, 4);
+  outline: none;
+}
+.popup__input-active {
+  border: 2px solid green;
+  outline: none;
+}
+.popup__input-inactive {
+  border: 2px solid rgb(252, 4, 4);
+  outline: none;
+}
+.popup__error_visible {
+  opacity: 1;
+}
+
+.popup__form-btn-submit {
+  padding: 12px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup__form-btn-submit:hover {
+  opacity: 0.8;
+}
+
+.popup__form-btn-submit-disable {
+  background-color: #e5e5e5;
+  color: #a1a1a1;
+  cursor: not-allowed;
+}
+
+/*.pupop__form-input:user-valid + .pupop__form-btn-submit {
+  background-color: black;
+  color: #fff;
+}*/
+.popup__form-input:valid + .popup__form-btn-submit {
+  background-color: black;
+  color: #fff;
+  pointer-events: initial;
+}
+.popup__container-btn-close {
+  position: absolute;
+  max-width: 40px;
+  max-height: 40px;
+  background-color: transparent;
+  border: 0;
+  top: -27.5px;
+  right: -28.5px;
+  cursor: pointer;
+}
+.popup__btn {
+  top: -5px;
+  right: 5px;
+}
+@media screen and (max-width: 768px) {
+  .popup__container {
+    box-sizing: border-box;
+    /*max-width: 60vw;
+    width: 100%;*/
+  }
+  .popup__container-title {
+    font-size: 18px;
+  }
+  .popup__container-btn-close {
+    top: -25px;
+    right: -14px;
+    max-width: 26px;
+    max-height: 26px;
+  }
+  .popup__form_btn-close-image {
+    width: 26px;
+    height: 26px;
+  }
+  .popup__container-image {
+    width: 90%;
+  }
+  .popup__btn {
+    top: -15px;
+    right: 75px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .popup__container {
+    max-width: 75vw;
+    width: 100%;
+  }
+}
+@media screen and(max-width: 430px) {
+  .popup__btn {
+    top: -15px;
+    right: 75px;
+  }
+}
