@@ -1,6 +1,6 @@
 import React from "react";
 
-function Container() {
+function Loader() {
   return (
     <>
       <div className="container">
@@ -24,4 +24,4 @@ function Container() {
   );
 }
 
-export default Container;
+export default Loader;

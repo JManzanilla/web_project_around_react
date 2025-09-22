@@ -1,0 +1,57 @@
+import lapiz from "@images/lapiz.png";
+import cruz from "@images/cruz.png";
+import NewCard from "@componentsMain/Popup/Form/NewCard/NewCard";
+import EditProfile from "@componentsMain/Popup/Form/EditProfile/EditProfile";
+import Avatar from "@componentsMain/Popup/Form/Avatar/Avatar";
+
+function Profile({ onHandleOpenPopup }) {
+  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+  const editProfile = { title: "Editar perfil", children: <EditProfile /> };
+  const avatar = { title: "Cambiar Foto de perfil", children: <Avatar /> };
+  return (
+    <section className="profile">
+      <div className="profile__content">
+        <div className="profile__image-container">
+          <img src=" " alt="foto de perfil" className="profile__image" />
+          <button
+            type="button"
+            className="profile__avatar-edit-button"
+            id="profile__image-button-action"
+            onClick={() => onHandleOpenPopup(avatar)}
+          >
+            <img
+              src={lapiz}
+              alt="icono de lapiz para editar foto de perfil"
+              className="profile__avatar-edit-button-image"
+            />
+          </button>
+        </div>
+        <div>
+          <h2 className="profile__title">Cargando..</h2>
+          <p className="profile__title-content">Cargando...</p>
+        </div>
+        <button
+          type="button"
+          className="profile__lapiz"
+          id="profile__lapiz-action-add"
+          onClick={() => onHandleOpenPopup(editProfile)}
+        >
+          <img src={lapiz} alt="Lapiz para deditar perfil" />
+        </button>
+        <button
+          type="button"
+          className="profile__cruz"
+          onClick={() => onHandleOpenPopup(newCardPopup)}
+        >
+          <img
+            src={cruz}
+            alt="cruz para agregar imagenes"
+            className="profile__cruz-logo"
+          />
+        </button>
+      </div>
+    </section>
+  );
+}
+
+export default Profile;
