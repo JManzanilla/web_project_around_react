@@ -6,7 +6,7 @@
   height: 100vh;
   width: 100vw;
   pointer-events: none;
-  opacity: 0;
+  /*opacity: 0;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
 
 .popup__show {
   pointer-events: auto;
-  opacity: 1;
+  /*opacity: 1;*/
 }
 .popup__container {
   max-width: 370px;
@@ -34,18 +34,19 @@
   color: #fff;
 }
 .popup__container-images {
-  /*max-width: 65vw;
-  max-height: 65vh;*/
+  background-color: transparent;
+  max-width: 65vw;
+  max-height: 65vh;
   color: black;
   position: relative;
   top: 0;
   right: 0;
-  /*margin: 150px auto;*/
+  margin: 150px auto;
   padding: 34px 36px;
   border-radius: 25px;
 }
 .popup__container-image {
-  /*width: 50vw;*/
+  width: 50vw;
   height: 70vh;
   margin-bottom: 15px;
   border-radius: 10px;
