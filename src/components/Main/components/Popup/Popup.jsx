@@ -6,8 +6,8 @@ function Popup(props) {
     <>
       <div className="popup popup__show" id="popup__profile">
         <div
-          className={`popup__container ${
-            !title ? "popup__container-images" : ""
+          className={` ${
+            !title ? "popup__container-images" : "popup__container"
           }`}
         >
           {title && <h3>{title}</h3>}
@@ -15,7 +15,11 @@ function Popup(props) {
           {children}
           <button
             type="button"
-            className="popup__container-btn-close"
+            className={` ${
+              !title
+                ? "popup__container-btn-close popup__btn"
+                : "popup__container-btn-close "
+            }`}
             onClick={onClose}
           >
             <img

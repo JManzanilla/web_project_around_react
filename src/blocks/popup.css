@@ -35,7 +35,7 @@
 }
 .popup__container-images {
   background-color: transparent;
-  /*max-width: 65vw;
+  max-width: 65vw;
   max-height: 65vh;
   color: black;
   position: relative;
@@ -43,7 +43,7 @@
   right: 0;
   margin: 150px auto;
   padding: 34px 36px;
-  border-radius: 25px;*/
+  border-radius: 25px;
 }
 .popup__container-image {
   width: 50vw;

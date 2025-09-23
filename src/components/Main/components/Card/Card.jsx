@@ -1,5 +1,6 @@
 import trash from "@images/trash.png";
 import ImagePopup from "@componentsMain/Popup/Form/ImagePopup/ImagePopup";
+import RemoveCard from "../Popup/Form/RemoveCard/RemoveCard";
 
 function Card(props) {
   const { name, link } = props.card;
@@ -7,8 +8,15 @@ function Card(props) {
     title: "",
     children: <ImagePopup name={name} link={link} />,
   };
+  const removeCardPopupImage = {
+    title: "Estas seguro",
+    children: <RemoveCard />,
+  };
   function handleClick() {
     props.onHandleOpenPopup(imagenPopup);
+  }
+  function removeCard() {
+    props.onHandleOpenPopup(removeCardPopupImage);
   }
 
   return (
@@ -20,7 +28,11 @@ function Card(props) {
           className="element__image"
           onClick={handleClick}
         />
-        <button type="button" className="element__content-btn">
+        <button
+          type="button"
+          className="element__content-btn"
+          onClick={removeCard}
+        >
           <img src={trash} alt="basura" className="element__content-trash" />
         </button>
         <div className="element__content-description">
