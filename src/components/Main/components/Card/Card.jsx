@@ -1,6 +1,6 @@
 import trash from "@images/trash.png";
 import ImagePopup from "@componentsMain/Popup/Form/ImagePopup/ImagePopup";
-import RemoveCard from "../Popup/Form/RemoveCard/RemoveCard";
+import RemoveCard from "@RemoveCard/RemoveCard";
 
 function Card(props) {
   const { name, link } = props.card;

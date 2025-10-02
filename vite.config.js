@@ -18,6 +18,10 @@ export default defineConfig({
         "./src/components/Main/components"
       ),
       "@images": path.resolve(__dirname, "./src/images"),
+      "@RemoveCard": path.resolve(
+        __dirname,
+        "./src/components/Main/components/Popup/Form/RemoveCard"
+      ),
     },
   },
   server: {

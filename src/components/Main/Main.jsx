@@ -3,27 +3,24 @@ import Popup from "./components/Popup/Popup";
 import Loader from "@componentsMain/Loader/Loader";
 import Profile from "./components/Profile/Profile";
 import { useState } from "react";
-const cards = [
-  {
-    isLiked: false,
-    _id: "5d1f0611d321eb4bdcd707dd",
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:10:57.741Z",
+import Api from "@/utils/Api";
+
+const api = new Api({
+  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  headers: {
+    authorization: "911005ad-24e0-40bd-a91b-f65ac83a977d",
+    "Content-Type": "application/json",
   },
-  {
-    isLiked: false,
-    _id: "5d1f064ed321eb4bdcd707de",
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:11:58.324Z",
-  },
-];
+});
 
 function Main() {
   const [popup, setPopup] = useState(null);
+  const [cards, setCards] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    api.getInitialCards().then(setCards);
+  }, []);
 
   function handleOpenPopup(popup) {
     setPopup(popup);
