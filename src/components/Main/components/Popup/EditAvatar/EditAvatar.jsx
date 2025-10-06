@@ -1,7 +1,7 @@
 import { useRef, useContext, useState } from "react";
 import CurrentUserContext from "@/contexts/CurrentUserContext";
 
-function Avatar() {
+function EditAvatar() {
   const inputRef = useRef(null);
   const { handleUpdateAvatar } = useContext(CurrentUserContext);
   const [isSaving, setIsSaving] = useState(false);
@@ -54,4 +54,4 @@ function Avatar() {
   );
 }
 
-export default Avatar;
+export default EditAvatar;
