@@ -3,16 +3,26 @@ import cruz from "@images/cruz.png";
 import NewCard from "@componentsMain/Popup/Form/NewCard/NewCard";
 import EditProfile from "@componentsMain/Popup/Form/EditProfile/EditProfile";
 import Avatar from "@componentsMain/Popup/Form/Avatar/Avatar";
+import { useContext } from "react";
+import CurrentUserContext from "@/contexts/CurrentUserContext";
 
-function Profile({ onHandleOpenPopup }) {
-  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+function Profile({ onHandleOpenPopup, onAddPlaceSubmit }) {
+  const { currentUser } = useContext(CurrentUserContext);
+  const newCardPopup = {
+    title: "Nuevo lugar",
+    children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit} />,
+  };
   const editProfile = { title: "Editar perfil", children: <EditProfile /> };
   const avatar = { title: "Cambiar Foto de perfil", children: <Avatar /> };
   return (
     <section className="profile">
       <div className="profile__content">
         <div className="profile__image-container">
-          <img src=" " alt="foto de perfil" className="profile__image" />
+          <img
+            src={currentUser?.avatar || " "}
+            alt="foto de perfil"
+            className="profile__image"
+          />
           <button
             type="button"
             className="profile__avatar-edit-button"
@@ -27,8 +37,12 @@ function Profile({ onHandleOpenPopup }) {
           </button>
         </div>
         <div>
-          <h2 className="profile__title">Cargando..</h2>
-          <p className="profile__title-content">Cargando...</p>
+          <h2 className="profile__title">
+            {currentUser?.name || "Cargando.."}
+          </h2>
+          <p className="profile__title-content">
+            {currentUser?.about || "Cargando..."}
+          </p>
         </div>
         <button
           type="button"

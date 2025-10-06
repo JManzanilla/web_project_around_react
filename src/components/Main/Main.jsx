@@ -2,45 +2,66 @@ import Card from "@componentsMain/Card/Card";
 import Popup from "./components/Popup/Popup";
 import Loader from "@componentsMain/Loader/Loader";
 import Profile from "./components/Profile/Profile";
-import { useState } from "react";
-import Api from "@/utils/Api";
+import { useContext } from "react";
+import CurrentUserContext from "@/contexts/CurrentUserContext";
 
-const api = new Api({
-  baseUrl: "https://around-api.es.tripleten-services.com/v1",
-  headers: {
-    authorization: "911005ad-24e0-40bd-a91b-f65ac83a977d",
-    "Content-Type": "application/json",
-  },
-});
+function Main({
+  onOpenPopup,
+  onClosePopup,
+  popup,
+  cards,
+  isLoading,
+  onCardLike,
+  onCardDelete,
+  onAddPlaceSubmit,
+}) {
+  /*  const [currentUser, setCurrentUser] = useState({}); */
+  /*   console.log(currentUser); */
 
-function Main() {
-  const [popup, setPopup] = useState(null);
-  const [cards, setCards] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
+  const { currentUser } = useContext(CurrentUserContext);
 
-  useEffect(() => {
-    api.getInitialCards().then(setCards);
-  }, []);
-
-  function handleOpenPopup(popup) {
-    setPopup(popup);
+  function handleOpenPopup(popupData) {
+    if (onOpenPopup) onOpenPopup(popupData);
   }
   function handleClosePopup() {
-    setPopup(null);
+    if (onClosePopup) onClosePopup();
   }
   return (
     <>
       <main className="main">
-        <Profile onHandleOpenPopup={handleOpenPopup} />
+        <Profile
+          onHandleOpenPopup={handleOpenPopup}
+          onAddPlaceSubmit={onAddPlaceSubmit}
+        />
         <section className="element">
-          <Loader />
-          {cards.map((card) => (
-            <Card
-              key={card._id}
-              card={card}
-              onHandleOpenPopup={handleOpenPopup}
-            />
-          ))}
+          {isLoading ? (
+            <Loader />
+          ) : cards.length === 0 ? (
+            <p>No hay tarjetas aún.</p>
+          ) : (
+            cards.map((card) => {
+              const isLiked = Boolean(
+                currentUser &&
+                  ((Array.isArray(card.likes) &&
+                    card.likes.some(
+                      (like) =>
+                        like._id === currentUser._id || like === currentUser._id
+                    )) ||
+                    card.isLiked)
+              );
+
+              return (
+                <Card
+                  key={card._id}
+                  card={card}
+                  isLiked={isLiked}
+                  onHandleOpenPopup={handleOpenPopup}
+                  onCardLike={onCardLike}
+                  onCardDelete={onCardDelete}
+                />
+              );
+            })
+          )}
         </section>
         {popup && (
           <Popup onClose={handleClosePopup} title={popup.title}>

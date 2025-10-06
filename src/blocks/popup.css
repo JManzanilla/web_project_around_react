@@ -12,6 +12,7 @@
   align-items: center;
   backdrop-filter: blur(10px);
   z-index: 2;
+  font-family: "Inter";
 }
 
 .popup__show {

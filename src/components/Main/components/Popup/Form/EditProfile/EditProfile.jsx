@@ -1,39 +1,83 @@
+import { useState, useContext, useEffect } from "react";
+import CurrentUserContext from "@/contexts/CurrentUserContext";
+
 function EditProfile() {
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const [name, setName] = useState(currentUser?.name || "");
+  const [description, setDescription] = useState(currentUser?.about || "");
+
+  useEffect(() => {
+    // Cuando currentUser cambie (llega de la API), actualizamos los valores del formulario
+    setName(currentUser?.name || "");
+    setDescription(currentUser?.about || "");
+  }, [currentUser]);
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleDescriptionChange(e) {
+    setDescription(e.target.value);
+  }
+
+  const { handleUpdateUser } = useContext(CurrentUserContext);
+
+  const [isSaving, setIsSaving] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setIsSaving(true);
+    try {
+      await handleUpdateUser({ name, about: description });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
   return (
     <form
-      class="popup__form"
+      className="popup__form"
       id="popup__form-profile"
       name="profile-form"
-      novalidate
+      noValidate
+      onSubmit={handleSubmit}
     >
-      <fieldset class="popup__form-fieldset">
+      <fieldset className="popup__form-fieldset">
         <input
           type="text"
           id="popup__form-name"
-          class="popup__form-input popup__input"
+          className="popup__form-input popup__input"
           name="name"
           placeholder="Nombre"
           required
-          minlength="2"
-          maxlength="40"
+          minLength={2}
+          maxLength={40}
+          value={name}
+          onChange={handleNameChange}
         />
-        <span class="popup__error" id="popup__form-name-error"></span>
+        <span className="popup__error" id="popup__form-name-error"></span>
         <input
           type="text"
           id="popup__form-about"
-          class="popup__form-input popup__input"
+          className="popup__form-input popup__input"
           name="about"
           placeholder="Acerca de mi"
           required
-          minlength="4"
-          maxlength="30"
+          minLength={4}
+          maxLength={30}
+          value={description}
+          onChange={handleDescriptionChange}
         />
-        <span class="popup__error" id="popup__form-about-error"></span>
+        <span className="popup__error" id="popup__form-about-error"></span>
         <button
           type="submit"
-          class="popup__form-btn-submit popup__form-btn-submit-disable"
+          className="popup__form-btn-submit"
+          disabled={isSaving}
         >
-          Guardar
+          {isSaving ? "Guardando..." : "Guardar"}
         </button>
       </fieldset>
     </form>

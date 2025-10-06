@@ -1,36 +1,50 @@
-export default function NewCard() {
+import { useState } from "react";
+
+export default function NewCard({ onAddPlaceSubmit }) {
+  const [name, setName] = useState("");
+  const [link, setLink] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (onAddPlaceSubmit) onAddPlaceSubmit({ name, link });
+    setName("");
+    setLink("");
+  }
+
   return (
     <form
-      class="popup__form"
+      className="popup__form"
       id="popup__form-image"
       name="image-form"
-      novalidate
+      noValidate
+      onSubmit={handleSubmit}
     >
-      <fieldset class="popup__form-fieldset">
+      <fieldset className="popup__form-fieldset">
         <input
           type="text"
           id="popup__form-title"
-          class="popup__form-input popup__input"
+          className="popup__form-input popup__input"
           name="title"
           placeholder="Título"
           required
-          minlength="4"
-          maxlength="30"
+          minLength={4}
+          maxLength={30}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
-        <span class="popup__error" id="popup__form-title-error"></span>
+        <span className="popup__error" id="popup__form-title-error"></span>
         <input
           type="url"
           id="popup__form-image-url"
-          class="popup__form-input popup__input"
+          className="popup__form-input popup__input"
           name="image"
           placeholder="Enlace a la imagen"
           required
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
         />
-        <span class="popup__error" id="popup__form-image-url-error"></span>
-        <button
-          type="submit"
-          class="popup__form-btn-submit popup__form-btn-submit-disable"
-        >
+        <span className="popup__error" id="popup__form-image-url-error"></span>
+        <button type="submit" className="popup__form-btn-submit">
           Crear
         </button>
       </fieldset>

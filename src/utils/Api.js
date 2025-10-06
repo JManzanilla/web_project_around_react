@@ -64,3 +64,11 @@ export class Api {
     }).then(this._checkResponse);
   }
 }
+
+export const api = new Api({
+  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  headers: {
+    authorization: "911005ad-24e0-40bd-a91b-f65ac83a977d",
+    "Content-Type": "application/json",
+  },
+});
