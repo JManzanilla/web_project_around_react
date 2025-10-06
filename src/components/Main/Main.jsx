@@ -1,9 +1,9 @@
-import Card from "@componentsMain/Card/Card";
+import Card from "./componentsMain/Card/Card";
 import Popup from "./components/Popup/Popup";
-import Loader from "@componentsMain/Loader/Loader";
+import Loader from "./components/Main/Loader/Loader";
 import Profile from "./components/Profile/Profile";
 import { useContext } from "react";
-import CurrentUserContext from "@/contexts/CurrentUserContext";
+import CurrentUserContext from "./components/Main/contexts/CurrentUserContext";
 
 function Main({
   onOpenPopup,
