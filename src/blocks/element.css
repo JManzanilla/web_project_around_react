@@ -4,7 +4,7 @@
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 20px 17px;
+  gap: 95px 17px;
   margin: 0 auto;
   min-height: 140px;
 }
@@ -15,7 +15,6 @@
   width: 100%;
   height: 100%;
   position: relative;
-  border: solid 1px #f30808;
 }
 .element__content-btn {
   width: 20px;
