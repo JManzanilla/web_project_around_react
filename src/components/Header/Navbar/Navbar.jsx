@@ -4,6 +4,7 @@ import headerLogo from "../../images/logo.svg";
 import "./styles/NavBar.css";
 import AppContext from "../context/ApiContext";
 import { useContext } from "react";
+import { Api } from "../../../utils/Api";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -16,14 +17,15 @@ function NavBar() {
     setIsLoggedIn(false);
   }
   return (
+    <ApiContext.Provider>
     <div className="navbar">
       <div className="navbar__logo">
         <img src={headerLogo} alt="logo de Around" className="header__logo" />
       </div>
       <ul className="navbar__nav">
         <li>
-          <NavLink to="/ducks" className="navbar__link">
-            Patos
+          <NavLink to="/" className="navbar__link">
+            Inicio
           </NavLink>
         </li>
         <li>
@@ -38,6 +40,7 @@ function NavBar() {
         </li>
       </ul>
     </div>
+    </ApiContext.Provider>
   );
 }
 

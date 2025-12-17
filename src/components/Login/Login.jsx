@@ -30,11 +30,11 @@ const Login = ({ handleLogin }) => {
         sesión o regístrate para acceder a CryptoDucks.
       </p>
       <form className="login__form" onSubmit={handleSubmit}>
-        <label htmlFor="username">
+        <label htmlFor="email">
           <Email></Email>:
         </label>
         <input
-          id="username"
+          id="email"
           required
           name="email"
           type="text"

@@ -17,7 +17,7 @@ import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import CurrentUser from "../contexts/CurrentUserContext";
-import { api } from "../utils/Api";
+import { Api, api } from "../utils/Api";
 
 function App() {
   const [userData, setUserData] = useState({ username: "", email: "" });
@@ -28,6 +28,7 @@ function App() {
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   const handleRegistration = ({ email, password, confirmPassword }) => {
     if (password === confirmPassword) {
       auth
@@ -50,7 +51,7 @@ function App() {
           setToken(data.jwt);
           setUserData(data.user);
           setIsLoggedIn(true);
-          const redirectPath = location.state?.from?.pathname || "/ducks";
+          const redirectPath = location.state?.from?.pathname || "/";
           navigate(redirectPath);
         }
       })
@@ -188,6 +189,7 @@ function App() {
           onCardDelete={handleCardDelete}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
+
         <Footer />
       </div>
     </CurrentUser.Provider>
