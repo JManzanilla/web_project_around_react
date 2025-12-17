@@ -1,17 +1,62 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react";
 import "../index.css";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import { setToken, getToken } from "../utils/token";
+import * as auth from "../utils/auth";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import CurrentUser from "../contexts/CurrentUserContext";
-import { api } from "../utils/Api";
+import { Api, api } from "../utils/Api";
 
 function App() {
+  const [userData, setUserData] = useState({ username: "", email: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState(null);
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleRegistration = ({ email, password, confirmPassword }) => {
+    if (password === confirmPassword) {
+      auth
+        .register(email, password)
+        .then(() => {
+          console.log("Registro exitoso");
+          navigate("/login");
+        })
+        .catch(console.error);
+    }
+  };
+  const handleLogin = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.jwt) {
+          setToken(data.jwt);
+          setUserData(data.user);
+          setIsLoggedIn(true);
+          const redirectPath = location.state?.from?.pathname || "/";
+          navigate(redirectPath);
+        }
+      })
+      .catch(console.error);
+  };
   useEffect(() => {
     api.getUserInfo().then(setCurrentUser).catch(console.error);
   }, []);
@@ -144,6 +189,7 @@ function App() {
           onCardDelete={handleCardDelete}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
+
         <Footer />
       </div>
     </CurrentUser.Provider>
