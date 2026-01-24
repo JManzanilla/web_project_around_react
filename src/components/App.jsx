@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
+=======
 import "../index.css";
 import Header from "./Header/Header";
+>>>>>>> main
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import CurrentUser from "../contexts/CurrentUserContext";
@@ -133,7 +136,6 @@ function App() {
       value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}
     >
       <div className="page">
-        <Header />
         <Main
           onOpenPopup={handleOpenPopup}
           onClosePopup={handleClosePopup}
