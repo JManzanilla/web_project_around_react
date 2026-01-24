@@ -1,10 +1,10 @@
-import lapiz from "@images/lapiz.png";
-import cruz from "@images/cruz.png";
-import NewCard from "@componentsMain/Popup/Form/NewCard/NewCard";
-import EditProfile from "@componentsMain/Popup/Form/EditProfile/EditProfile";
-import Avatar from "@componentsMain/Popup/Form/Avatar/Avatar";
+import lapiz from "../../../../images/lapiz.png";
+import cruz from "../../../../images/cruz.png";
+import NewCard from "../Popup/NewCard/NewCard";
+import EditProfile from "../Popup/EditProfile/EditProfile";
+import EditAvatar from "../Popup/EditAvatar/EditAvatar";
 import { useContext } from "react";
-import CurrentUserContext from "@/contexts/CurrentUserContext";
+import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 
 function Profile({ onHandleOpenPopup, onAddPlaceSubmit }) {
   const { currentUser } = useContext(CurrentUserContext);
@@ -13,7 +13,7 @@ function Profile({ onHandleOpenPopup, onAddPlaceSubmit }) {
     children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit} />,
   };
   const editProfile = { title: "Editar perfil", children: <EditProfile /> };
-  const avatar = { title: "Cambiar Foto de perfil", children: <Avatar /> };
+  const avatar = { title: "Cambiar Foto de perfil", children: <EditAvatar /> };
   return (
     <section className="profile">
       <div className="profile__content">

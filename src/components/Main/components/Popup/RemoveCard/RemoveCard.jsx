@@ -1,5 +1,3 @@
-import Equis from "@images/equis.png";
-
 function RemoveCard({ onConfirm }) {
   return (
     <>

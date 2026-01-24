@@ -97,6 +97,7 @@
   box-sizing: border-box;
   top: -10px;
   cursor: pointer;
+  padding-top: 5px;
 }
 .profile__cruz:hover {
   opacity: 0.6;
