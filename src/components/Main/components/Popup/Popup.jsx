@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import Equis from "./../../../../images/equis.png";
-=======
-import Equis from "../../../../images/equis.png";
->>>>>>> main
 function Popup(props) {
   //los hijos son el contenido de la ventana emergente
   const { title, children, onClose } = props;

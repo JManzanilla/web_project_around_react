@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import { useLocation, useNavigate } from "react-router-dom";
-import headerLogo from "@images/logo.svg";
-=======
+
 import headerLogo from "../../images/logo.svg";
->>>>>>> main
 
 function Header({ isLoggedIn, userEmail, onLogout }) {
   const location = useLocation();

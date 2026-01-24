@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
-=======
 import "../index.css";
-import Header from "./Header/Header";
->>>>>>> main
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import CurrentUser from "../contexts/CurrentUserContext";
@@ -57,18 +53,18 @@ function App() {
 
     const isLiked = Boolean(
       currentUser &&
-        ((Array.isArray(currentCard.likes) &&
-          currentCard.likes.some((l) =>
-            l && l._id ? l._id === currentUser._id : l === currentUser._id
-          )) ||
-          currentCard.isLiked)
+      ((Array.isArray(currentCard.likes) &&
+        currentCard.likes.some((l) =>
+          l && l._id ? l._id === currentUser._id : l === currentUser._id,
+        )) ||
+        currentCard.isLiked),
     );
 
     const optimisticCard = {
       ...currentCard,
       likes: isLiked
         ? (currentCard.likes || []).filter((l) =>
-            l && l._id ? l._id !== currentUser._id : l !== currentUser._id
+            l && l._id ? l._id !== currentUser._id : l !== currentUser._id,
           )
         : [...(currentCard.likes || []), { _id: currentUser._id }],
     };
@@ -76,7 +72,7 @@ function App() {
     const prevCards = cards;
 
     setCards((state) =>
-      state.map((c) => (c._id === card._id ? optimisticCard : c))
+      state.map((c) => (c._id === card._id ? optimisticCard : c)),
     );
     try {
       const newCard = isLiked
@@ -95,7 +91,7 @@ function App() {
       })();
 
       setCards((state) =>
-        state.map((c) => (c._id === card._id ? normalizedCard : c))
+        state.map((c) => (c._id === card._id ? normalizedCard : c)),
       );
     } catch (error) {
       console.error("Like toggle failed:", error);
