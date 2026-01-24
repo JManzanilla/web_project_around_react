@@ -13,20 +13,20 @@ function Header({ isLoggedIn, userEmail, onLogout }) {
       {isAuthPage && (
         <nav className="header__nav">
           {location.pathname === "/signin" ? (
-            <p className="header__auth-text">
+            <p className="header__email">
               ¿Aún no eres miembro?{" "}
               <button
-                className="header__link"
+                className="header__logout-btn"
                 onClick={() => navigate("/signup")}
               >
                 Regístrate aquí
               </button>
             </p>
           ) : (
-            <p className="header__auth-text">
+            <p className="header__email">
               ¿Ya eres miembro?{" "}
               <button
-                className="header__link"
+                className="header__logout-btn"
                 onClick={() => navigate("/signin")}
               >
                 Inicia sesión aquí

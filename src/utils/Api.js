@@ -4,11 +4,15 @@ export class Api {
   }
 
   _getHeaders() {
-    const token = localStorage.getItem("jwt");
-    return {
+    const token = "911005ad-24e0-40bd-a91b-f65ac83a977d";
+    const headers = {
       "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }),
+      ...(token && { Authorization: `${token}` }),
     };
+    if (!token) {
+      console.warn("⚠️ No hay token en localStorage");
+    }
+    return headers;
   }
 
   _checkResponse(res) {
@@ -21,13 +25,23 @@ export class Api {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._getHeaders(),
-    }).then(this._checkResponse);
+    })
+      .then(this._checkResponse)
+      .catch((err) => {
+        console.error("❌ Error en getUserInfo:", err);
+        throw err;
+      });
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._getHeaders(),
-    }).then(this._checkResponse);
+    })
+      .then(this._checkResponse)
+      .catch((err) => {
+        console.error("❌ Error en getInitialCards:", err);
+        throw err;
+      });
   }
 
   createCards({ name, link }) {

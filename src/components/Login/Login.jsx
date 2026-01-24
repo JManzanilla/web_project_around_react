@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authorize } from "@/utils/auth";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import { authorize } from "./../../utils/auth";
+import InfoTooltip from "./../InfoTooltip/InfoTooltip";
+import successImage from "./../../images/success.png";
+import errorImage from "./../../images/error.png";
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -19,7 +21,10 @@ function Login({ onLogin }) {
       const token = res?.token;
       if (token) {
         onLogin(token, email);
-        navigate("/");
+        setIsSuccess(true);
+        setTooltipMessage("¡Inicio de sesión exitoso!");
+        setTooltipOpen(true);
+        setTimeout(() => navigate("/"), 1500);
       } else {
         setIsSuccess(false);
         setTooltipMessage("Inicio de sesión fallido: token no recibido");
@@ -31,30 +36,33 @@ function Login({ onLogin }) {
       setTooltipOpen(true);
     }
   }
-
   return (
     <>
-      <div className="auth-page">
-        <h2>Iniciar sesión</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email
+      <div className="login">
+        <h2 className="login__title">Iniciar sesión</h2>
+        <form className="login__form" onSubmit={handleSubmit}>
+          <fieldset className="login__form-fieldset">
             <input
+              placeholder="Correo electrónico"
+              className="login__input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </label>
-          <label>
-            Contraseña
+
             <input
+              className="login__input"
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </label>
-          <button type="submit">Entrar</button>
+
+            <button className="login__button" type="submit">
+              Iniciar Seción
+            </button>
+          </fieldset>
         </form>
       </div>
       <InfoTooltip
@@ -62,9 +70,9 @@ function Login({ onLogin }) {
         onClose={() => setTooltipOpen(false)}
         isSuccess={isSuccess}
         message={tooltipMessage}
+        image={isSuccess ? successImage : errorImage}
       />
     </>
   );
 }
-
 export default Login;

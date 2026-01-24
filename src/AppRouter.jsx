@@ -63,27 +63,29 @@ function AppRouter() {
 
   return (
     <BrowserRouter>
-      <Header
-        isLoggedIn={isLoggedIn}
-        userEmail={userEmail}
-        onLogout={handleLogout}
-      />
-      <Routes>
-        <Route path="/signin" element={<Login onLogin={handleLogin} />} />
-        <Route path="/signup" element={<Register />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <App onSignOut={handleLogout} />
-            </ProtectedRoute>
-          }
+      <div className="page">
+        <Header
+          isLoggedIn={isLoggedIn}
+          userEmail={userEmail}
+          onLogout={handleLogout}
         />
-        <Route
-          path="*"
-          element={<Navigate to={isLoggedIn ? "/" : "/signin"} replace />}
-        />
-      </Routes>
+        <Routes>
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={<Register />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <App onSignOut={handleLogout} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={<Navigate to={isLoggedIn ? "/" : "/signin"} replace />}
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

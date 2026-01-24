@@ -3,7 +3,11 @@
   max-width: 880px;
   width: 100%;
   margin: 0 auto 40px;
-  align-content: center;
+  align-content: flex-end;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 .header__logo {
   max-width: 880px;
@@ -11,6 +15,24 @@
   max-height: 74px;
   height: 100%;
   margin: 0 auto;
+}
+.header__nav {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+.header__email {
+  margin: 0 25px 0 0;
+  font-family: "Inter";
+}
+.header__logout-btn {
+  background: transparent;
+  border: none;
+  font-family: "Inter";
+  color: aliceblue;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -36,5 +58,13 @@
     max-height: 56px;
     height: 100%;
     padding: 0px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
