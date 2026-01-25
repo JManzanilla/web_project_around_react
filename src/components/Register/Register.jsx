@@ -4,6 +4,7 @@ import { register } from "./../../utils/auth";
 import InfoTooltip from "./../InfoTooltip/InfoTooltip";
 import successImage from "./../../images/success.png";
 import errorImage from "./../../images/error.png";
+import eye from "./../../images/eye-scan.svg";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ function Register() {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -41,35 +43,56 @@ function Register() {
       <div className="login">
         <h2 className="login__title">Registrate</h2>
         <form className="login__form" onSubmit={handleSubmit}>
-          <input
-            className="login__input"
-            value={email}
-            placeholder="Correo Electronico"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <fieldset className="login__form-fieldset">
+            <input
+              className="login__input"
+              value={email}
+              placeholder="Correo Electronico"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-          <input
-            className="login__input"
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+            <div className="login__password">
+              <input
+                className="login__input"
+                type={showPassword ? "text" : "password"}
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span>
+                <img
+                  src={eye}
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="login__eye"
+                  alt="ocultar o visualizar contraseña"
+                />
+              </span>
+            </div>
 
-          <input
-            className="login__input"
-            type="password"
-            placeholder="Confirmar Contraseña"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-
-          <button className="login__button" type="submit">
-            Registrarse
-          </button>
+            <div className="login__password">
+              <input
+                className="login__input"
+                type={showPassword ? "text" : "password"}
+                placeholder="Confirmar Contraseña"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <span>
+                <img
+                  src={eye}
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="login__eye"
+                  alt="ocultar o visualizar contraseña"
+                />
+              </span>
+            </div>
+            <button className="login__button" type="submit">
+              Registrarse
+            </button>
+          </fieldset>
         </form>
       </div>
       <InfoTooltip

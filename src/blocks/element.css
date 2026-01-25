@@ -77,6 +77,7 @@
   box-sizing: border-box;
   cursor: pointer;
   background-image: url(../images/Vector.svg);
+  background-color: transparent;
   background-size: cover;
   background-repeat: no-repeat;
   border: 0;
@@ -85,6 +86,7 @@
   height: 22px;
   /*transition: opacity 0.3s ease, background 0.3s ease;*/
   opacity: 0.5;
+  object-fit: cover;
 }
 .element__content-like_is-active {
   background-image: url(../images/rojo.svg);

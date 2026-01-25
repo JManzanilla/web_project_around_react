@@ -4,6 +4,7 @@ import { authorize } from "./../../utils/auth";
 import InfoTooltip from "./../InfoTooltip/InfoTooltip";
 import successImage from "./../../images/success.png";
 import errorImage from "./../../images/error.png";
+import eye from "./../../images/eye-scan.svg";
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ function Login({ onLogin }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -24,7 +26,7 @@ function Login({ onLogin }) {
         setIsSuccess(true);
         setTooltipMessage("¡Inicio de sesión exitoso!");
         setTooltipOpen(true);
-        setTimeout(() => navigate("/"), 1500);
+        setTimeout(() => navigate("/"), 2000);
       } else {
         setIsSuccess(false);
         setTooltipMessage("Inicio de sesión fallido: token no recibido");
@@ -49,16 +51,24 @@ function Login({ onLogin }) {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-
-            <input
-              className="login__input"
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-
+            <div className="login__password">
+              <input
+                className="login__input"
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span>
+                <img
+                  src={eye}
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="login__eye"
+                  alt="ocultar o visualizar contraseña"
+                />
+              </span>
+            </div>
             <button className="login__button" type="submit">
               Iniciar Seción
             </button>

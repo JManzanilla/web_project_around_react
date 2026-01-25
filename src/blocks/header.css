@@ -34,6 +34,9 @@
   text-decoration: none;
   cursor: pointer;
 }
+.header__logout-btn:hover {
+  opacity: 0.6;
+}
 
 @media screen and (max-width: 768px) {
   .header {
