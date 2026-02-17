@@ -39,7 +39,6 @@ function AppRouter() {
       setIsLoading(false);
     }
   }, []);
-
   function handleLogin(token, email) {
     if (token) {
       localStorage.setItem("jwt", token);
@@ -48,19 +47,16 @@ function AppRouter() {
       setUserEmail(email);
     }
   }
-
   function handleLogout() {
     localStorage.removeItem("jwt");
     localStorage.removeItem("userEmail");
     setIsLoggedIn(false);
     setUserEmail("");
   }
-
   // Mostrar un loader mientras se valida el token
   if (isLoading) {
     return <div>Cargando...</div>;
   }
-
   return (
     <BrowserRouter>
       <div className="page">
@@ -89,5 +85,4 @@ function AppRouter() {
     </BrowserRouter>
   );
 }
-
 export default AppRouter;
