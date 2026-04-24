@@ -1,46 +1,74 @@
-# Proyecto Around - React + Vite
+# Around The U.S. — React
 
-Proyecto de aplicación web desarrollado con React y Vite. Este proyecto es una versión moderna de la plataforma social "Around" utilizando tecnologías modernas.
+Refactorización de la plataforma Around con React 19 y Vite. Convierte la versión de JavaScript puro en una SPA basada en componentes, manteniendo toda la funcionalidad original e integrándola con el backend REST de Around.
 
-## 📋 Descripción
+## Descripción
 
-Este proyecto proporciona una configuración mínima para trabajar con React en Vite con HMR (Hot Module Replacement) y reglas de ESLint configuradas.
+Around React es la migración del proyecto Around vanilla JS a una arquitectura de componentes React. Implementa la misma experiencia de usuario (galería de fotos, perfil, likes, modales) usando componentes funcionales, Context API y React Router DOM para la navegación.
 
-## 🚀 Características
+## Tecnologías utilizadas
 
-- **React + Vite**: Setup rápido y eficiente para desarrollo
-- **HMR**: Actualización en tiempo real durante el desarrollo
-- **ESLint**: Configuración de linting para mantener código limpio
-- **Componentes Modernos**: Estructura basada en componentes React
-- **Interfaz Responsiva**: Diseño adaptable a diferentes dispositivos
+- React 19
+- Vite 7
+- React Router DOM 7
+- JavaScript ES6+
+- CSS3 con metodología BEM
+- ESLint
 
-## 🛠️ Configuración
+## Características
 
-Actualmente, dos plugins oficiales están disponibles:
+- Componentes funcionales para perfil, tarjetas, popups y formularios
+- React Context para compartir el usuario actual (`CurrentUserContext`)
+- React Router DOM para enrutamiento client-side
+- Rutas protegidas con `ProtectedRoute`
+- Flujo de autenticación: Login y Registro
+- Integración con API REST para tarjetas y perfil
+- Validación de formularios
+- Diseño responsivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) usa [Babel](https://babeljs.io/) para Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) usa [SWC](https://swc.rs/) para Fast Refresh
+## Componentes principales
 
-## 📝 Últimas Actualizaciones
+```
+src/components/
+├── App.jsx              # Componente raíz
+├── Header/
+├── Footer/
+├── Login/
+├── Register/
+├── ProtectedRoute/
+├── InfoTooltip/         # Notificación de éxito/error en auth
+└── Main/
+    └── components/
+        ├── Card/
+        ├── Profile/
+        ├── Loader/
+        └── Popup/
+            ├── EditProfile/
+            ├── EditAvatar/
+            ├── NewCard/
+            ├── ImagePopup/
+            └── RemoveCard/
+```
 
-- **Merge de rama future a main**: Se han integrado todos los cambios de la rama `future` a la rama principal `main` con el commit dc9fde06d44e71db14ff8ab0a49f91a41659177b
-- **Componentes de interfaz mejorados**: Popup, Formularios y Gestión de perfil
-- **Sistema de validación**: Validación de formularios integrada
-- **API Integration**: Conexión con backend para gestión de tarjetas y perfil de usuario
-
-## 🔧 Configuración de ESLint
-
-Si estás desarrollando una aplicación de producción, recomendamos usar TypeScript con reglas de lint conscientes de tipos. Consulta la [plantilla TS](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) para obtener información sobre cómo integrar TypeScript y [`typescript-eslint`](https://typescript-eslint.io) en tu proyecto.
-
-## 📦 Instalación y Uso
+## Instalación y uso
 
 ```bash
-# Instalar dependencias
+git clone git@github.com:JManzanilla/web_project_around_react.git
+cd web_project_around_react
 npm install
-
-# Iniciar servidor de desarrollo
-npm start
-
-# Build para producción
-npm run build
+npm run dev     # Servidor de desarrollo (abre el navegador automáticamente)
+npm run build   # Build de producción
 ```
+
+## Scripts
+
+| Script | Descripción |
+|--------|-------------|
+| `npm run dev` | Inicia Vite en modo desarrollo |
+| `npm run build` | Genera el build de producción |
+| `npm run preview` | Previsualiza el build localmente |
+| `npm run lint` | Ejecuta ESLint |
+
+## Autor
+
+Jesus Manzanilla — [GitHub](https://github.com/JManzanilla)
